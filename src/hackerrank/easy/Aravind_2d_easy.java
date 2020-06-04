@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Solution {
+public class Aravind_2d_easy {
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		int arr[][] = new int[6][6];
