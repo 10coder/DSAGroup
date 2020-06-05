@@ -1,0 +1,43 @@
+package sparse_arrays;
+
+import java.util.Scanner;
+
+public class Aravind_day1_medium_SparseArray {
+
+	public static void main(String args[]) {
+		String[] strings, q;
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		strings = new String[n];
+		for(int i=0; i<n; i++) {
+			strings[i] = sc.next();
+		}
+		n = sc.nextInt();
+		q = new String[n];
+		for(int i=0; i<n; i++) {
+			q[i] = sc.next();
+		}
+		//compare arrays
+		sparse(strings, q);
+		sc.close();
+	}
+	
+	public static void sparse(String[] ss, String[] q) {
+		int[] results = new int[q.length];
+		//time complexity O(strings.lengeth * queries.length)
+		//space complexity O(1)
+		//for every queries 
+		for(int i=0; i<results.length; i++) {
+			int c=0;
+			//compare with strings
+			for(int j=0; j<ss.length; j++) {
+				if(q[i].equals(ss[j])) {
+					c++;
+				}
+			}
+			results[i] =c;
+			System.out.println(c);
+		}
+		//return results;
+	}
+}
