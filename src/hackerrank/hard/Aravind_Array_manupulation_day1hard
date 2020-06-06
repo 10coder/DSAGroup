@@ -1,0 +1,38 @@
+package day1_hard;
+
+import java.util.Scanner;
+
+public class Aravind_Array_manupulation_day1hard {
+	
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		int size = sc.nextInt();//n
+		int lines = sc.nextInt();//m
+		int[][] arr = new int[lines][3];
+		for(int i =0; i<lines; i++) {
+			for(int j=0; j<3; j++) {
+				arr[i][j] = sc.nextInt();
+			}
+		}
+		manipulation(arr, size, lines);
+		sc.close();
+	}
+	
+	public static void manipulation(int[][] a, int s, int l) {
+		long[] res = new long[s+1];
+		long largest = 0;
+		for(int i=0; i<l; i++){
+			int from = Integer.min(a[i][0], a[i][1]);
+			int to = Integer.max(a[i][0], a[i][1]);
+			//using diff array logic
+			res[from-1] = res[from-1] + a[i][2];
+			res[to] = res[to]-a[i][2];
+		}
+		for(int i=1; i<res.length; i++) {
+			res[i]+=res[i-1]; 
+			largest = largest>res[i] ? largest : res[i];
+		}
+		System.out.println("result:" +largest);
+		//return largest;
+	}
+}
